@@ -1,6 +1,6 @@
-#Random Matrix Generator  
+# Random Matrix Generator  
   
-##Usage  
+## Usage  
 Go into the repo directory and cd into `./src`  
 run the following command  
 './generate.py' with the following flag:  
@@ -8,5 +8,5 @@ run the following command
 - -z with the matrix size of N x N, default = 8.
 - -b with the maximum bit of each matrix element, default = 8.
   
-##Output  
+## Output  
 All the generated matrix will be stored inside `./matrix`.
