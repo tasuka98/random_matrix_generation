@@ -6,9 +6,9 @@ import os
 
 
 def main():
-    n = 0
-    z = 0
-    b = 0
+    n = 8
+    z = 8
+    b = 8
     n_detect = False
     z_detect = False
     b_detect = False
@@ -37,24 +37,21 @@ def main():
             elif b_detect == False and i == '-b':
                 b_detect = True
 
-    if n == 0 or z == 0 or b == 0:
-        print("Error Command!, please \"--help\" for usage instruction")
-        exit(-1)
 
-    try:
-        os.rmdir("./matrix")
-    except:
-        decision = input("The matrix file is not empty, wish to delete all files inside? (Y/n):")
-        if decision == '':
-            shutil.rmtree("./matrix")
-        else:
-            print("please sort through your matrix before generating a new set")
-            exit(-1)
 
     try:
         os.mkdir("../matrix")
     except:
-        print("folder already created")
+        try:
+            os.rmdir("../matrix")
+        except:
+            decision = input("The matrix file is not empty, wish to delete all files inside? (Y/n):")
+            if decision == '':
+                shutil.rmtree("../matrix")
+                os.mkdir("../matrix")
+            else:
+                print("please sort through your matrix before generating a new set")
+                exit(-1)
 
     os.chdir("../matrix")
 
@@ -77,6 +74,7 @@ def main():
         print("finished creating %d matrix file" % (i + 1))
 
     print("SUCCESS: Finished creating all files ....")
+    os.chdir("../")
 
 
 if __name__ == "__main__":
